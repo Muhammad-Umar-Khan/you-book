@@ -1,12 +1,17 @@
 import { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
 const UsersDetails = () => {
+  const navigate = useNavigate();
   const { userId } = useParams();
   const [details, setDetails] = useState([]);
   const [isLoadin, setIsLoading] = useState(false);
+
+  const navigateToPostsPage = () => {
+    return navigate(`/details/${userId}/posts`);
+  };
 
   useEffect(() => {
     const loadUserDetails = async () => {
@@ -48,12 +53,16 @@ const UsersDetails = () => {
                 <strong>Address</strong>
               </p>
               <p>
-                <i>Street:</i> {detail.address["street"]},
-                <i>Suite:</i> {detail.address["suite"]},
-                <i>City:</i> {detail.address["city"]},
-                <i>ZipCode:</i> {detail.address["zipcode"]}               
+                <i>Street:</i> {detail.address["street"]},<i>Suite:</i>{" "}
+                {detail.address["suite"]},<i>City:</i> {detail.address["city"]},
+                <i>ZipCode:</i> {detail.address["zipcode"]}
               </p>
-              <button className="btn btn-outline-danger">POSTS</button>
+              <button
+                className="btn btn-outline-danger"
+                onClick={navigateToPostsPage}
+              >
+                POSTS
+              </button>
             </div>
           ))
         )}
