@@ -1,7 +1,9 @@
 import "./App.css";
 
+import Users from "./components/users/users";
+
 function App() {
-  return <h1>USERS BOOK</h1>;
+  return <Users />;
 }
 
 export default App;
