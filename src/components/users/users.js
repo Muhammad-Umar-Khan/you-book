@@ -1,13 +1,21 @@
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigateToDetails = (id) => {
+    navigate(`details/${id}`);
+  };
   useEffect(() => {
     const loadUsers = async () => {
+      setIsLoading(true);
       const loadedUsers = await axios.get(
         "https://jsonplaceholder.typicode.com/users"
       );
+      setIsLoading(false);
       setUsers(loadedUsers.data);
     };
     try {
@@ -16,13 +24,16 @@ const Users = () => {
       console.log(error.message);
     }
   }, []);
-  return (
-    <Fragment>
-        <form>
 
-      <input type="text" />
-      <button type="submit" className="btn btn-success btn-sm">Search</button>
-        </form>
+  return (
+    <div className="text-center mt-5"> 
+        {isLoading && <p>Loading users...</p>}
+      <form>
+        <input type="text" />
+        <button type="submit" className="btn btn-success btn-sm">
+          Search
+        </button>
+      </form>
       <table className="table">
         <thead>
           <tr>
@@ -36,9 +47,24 @@ const Users = () => {
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
+              <td
+                onClick={() => navigateToDetails(user.id)}
+                style={{ cursor: "pointer" }}
+              >
+                {user.id}
+              </td>
+              <td
+                onClick={() => navigateToDetails(user.id)}
+                style={{ cursor: "pointer" }}
+              >
+                {user.name}
+              </td>
+              <td
+                onClick={() => navigateToDetails(user.id)}
+                style={{ cursor: "pointer" }}
+              >
+                {user.email}
+              </td>
               <td>
                 <button className="btn btn-secondary">Update</button>
               </td>
@@ -49,7 +75,8 @@ const Users = () => {
           ))}
         </tbody>
       </table>
-    </Fragment>
+      <button className="btn btn-primary btn-lg text-center">Add +</button>
+    </div>
   );
 };
 

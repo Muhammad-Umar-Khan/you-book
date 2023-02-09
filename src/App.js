@@ -1,9 +1,8 @@
 import "./App.css";
-
-import Users from "./components/users/users";
+import MainNav from "./Navigations/MainNav";
 
 function App() {
-  return <Users />;
+  return <MainNav />;
 }
 
 export default App;
