@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -26,8 +26,8 @@ const Users = () => {
   }, []);
 
   return (
-    <div className="text-center mt-5"> 
-        {isLoading && <p>Loading users...</p>}
+    <div className="text-center mt-5">
+      {isLoading && <p>Loading users...</p>}
       <form>
         <input type="text" />
         <button type="submit" className="btn btn-success btn-sm">

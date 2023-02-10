@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Users from "../components/users/users";
 import UsersDetails from "../components/details/userDetails";
 import UserPosts from "../components/posts/userPosts";
-import PostComments from "../components/postComments/postComments";
 
 const MainNav = () => {
   return (

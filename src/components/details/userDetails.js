@@ -28,7 +28,7 @@ const UsersDetails = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [userId]);
 
   return (
     <Fragment>

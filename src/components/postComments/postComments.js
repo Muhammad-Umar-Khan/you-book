@@ -18,7 +18,7 @@ const PostComments = () => {
     } catch (error) {
       throw new Error("Could't load comments");
     }
-  }, []);
+  }, [postId]);
   return (
     <Fragment>
       {comments.map((comment) => (
