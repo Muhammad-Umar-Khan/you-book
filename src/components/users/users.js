@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import EditUser from "./EditUser";
 
 const Users = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  // const [isModalVisible, setIsModelVisibe] = useState(false);
+  // const toggleModal = () => {
+  //   setIsModelVisibe((preState) => !preState);
+  // };
   const navigateToDetails = (id) => {
     navigate(`details/${id}`);
   };
@@ -40,7 +45,7 @@ const Users = () => {
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Update</th>
+            <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
@@ -66,7 +71,10 @@ const Users = () => {
                 {user.email}
               </td>
               <td>
-                <button className="btn btn-secondary">Update</button>
+                {/* <button className="btn btn-info" onClick={toggleModal}>
+                  Edit
+                  {isModalVisible && <Modal />}
+                </button> */}
               </td>
               <td>
                 <button className="btn btn-danger">Delete</button>
@@ -76,6 +84,8 @@ const Users = () => {
         </tbody>
       </table>
       <button className="btn btn-primary btn-lg text-center">Add +</button>
+      {/* <button className="btn btn-info" onClick={toggleModal}></button>
+      {isModalVisible && <EditUser />} */}
     </div>
   );
 };
