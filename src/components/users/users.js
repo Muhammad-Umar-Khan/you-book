@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import SearchFilter from "../SearchFilter/SearchFilter";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -29,12 +30,7 @@ const Users = () => {
   return (
     <div className="text-center mt-5">
       {isLoading && <p>Loading users...</p>}
-      <form>
-        <input type="text" />
-        <button type="submit" className="btn btn-success btn-sm">
-          Search
-        </button>
-      </form>
+      <SearchFilter />
       <table className="table">
         <thead>
           <tr>
@@ -66,8 +62,7 @@ const Users = () => {
               >
                 {user.email}
               </td>
-              <td>
-              </td>
+              <td></td>
               <td>
                 <button className="btn btn-danger">Delete</button>
               </td>
