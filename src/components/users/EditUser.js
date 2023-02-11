@@ -1,6 +1,6 @@
 import Modal from "../../UI/Modal/Modal";
 
-const EditTodo = (props) => {
+const EditModal = (props) => {
   return (
     <Modal onClose={props.onClick}>
       <form>
@@ -13,4 +13,4 @@ const EditTodo = (props) => {
   );
 };
 
-export default EditTodo;
+export default EditModal;

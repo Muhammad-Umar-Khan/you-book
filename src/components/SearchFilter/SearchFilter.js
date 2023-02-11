@@ -1,21 +1,32 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./SearchFilter.css";
 
-const SearchFilter = () => {
+const SearchFilter = ({ setUsers }) => {
   const [query, setQuery] = useState("");
+  let response;
+
+  useEffect(() => {
+    const loadUseres = async () => {
+      response = await axios.get(
+        `https://jsonplaceholder.typicode.com/users?q=${query}`
+      );
+      setUsers(response.data);
+    };
+    loadUseres();
+  }, [query]);
 
   const searchChangeHandler = (event) => {
     setQuery(event.target.value);
   };
 
-  console.log(query);
   return (
-    <form className="align-items-end">
-      <input type="text" placeholder="Search" onClick={searchChangeHandler} />
-      <button type="submit" className="btn btn-success btn-sm">
-        Search
-      </button>
-    </form>
+    <input
+      type="text"
+      placeholder="Search"
+      value={query}
+      onChange={searchChangeHandler}
+    />
   );
 };
 
