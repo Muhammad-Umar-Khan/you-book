@@ -67,16 +67,20 @@ const Users = () => {
                 {user.email}
               </td>
               <td>
-                <EditUser user={user} setUsers={setUsers} users={users}/>
+                <EditUser user={user} setUsers={setUsers} users={users} />
               </td>
               <td>
-                <DeleteUser userId={user.id} users={users} setUsers={setUsers} />
+                <DeleteUser
+                  userId={user.id}
+                  users={users}
+                  setUsers={setUsers}
+                />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <AddNewUser />
+      <AddNewUser users={users} setUsers={setUsers} />
     </div>
   );
 };

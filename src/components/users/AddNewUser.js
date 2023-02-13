@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Fragment, useState } from "react";
 
-const AddNewUser = () => {
+const AddNewUser = ({ users, setUsers }) => {
   const [name, setName] = useState("");
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,15 +27,19 @@ const AddNewUser = () => {
     const response = await axios.post(
       `https://jsonplaceholder.typicode.com/users`,
       {
-        id: Math.floor(Math.random()),
+        id: Math.random(),
         name,
         username,
         email,
-        address,
+        address: {
+          street: address,
+          city: "",
+          suite: "",
+        },
       }
     );
     const user = response.data;
-    console.log(user);
+    setUsers([user, ...users]);
   };
 
   return (
