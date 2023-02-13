@@ -5,6 +5,7 @@ import SearchFilter from "../SearchFilter/SearchFilter";
 // import EditModal from "./EditUser";
 import DeleteUser from "./DeleteUser";
 import EditUser from "./EditUser";
+import AddNewUser from "./AddNewUser";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ const Users = () => {
           ))}
         </tbody>
       </table>
-      <button className="btn btn-primary btn-lg text-center">Add +</button>
+      <AddNewUser />
     </div>
   );
 };
