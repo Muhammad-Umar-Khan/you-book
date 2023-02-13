@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import SearchFilter from "../SearchFilter/SearchFilter";
-import EditModal from "./EditUser";
+// import EditModal from "./EditUser";
+import DeleteUser from "./DeleteUser";
+import EditUser from "./EditUser";
 
 const Users = () => {
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ const Users = () => {
   return (
     <div className="text-center mt-5">
       {isLoading && <p>Loading users...</p>}
-      <SearchFilter setUsers={setUsers}/>
+      <SearchFilter setUsers={setUsers} />
       <table className="table">
         <thead>
           <tr>
@@ -63,16 +65,17 @@ const Users = () => {
               >
                 {user.email}
               </td>
-              <td></td>
               <td>
-                <button className="btn btn-danger">Delete</button>
+                <EditUser user={user} setUsers={setUsers} users={users}/>
+              </td>
+              <td>
+                <DeleteUser userId={user.id} users={users} setUsers={setUsers} />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <button className="btn btn-primary btn-lg text-center">Add +</button>
-      <EditModal />
     </div>
   );
 };
