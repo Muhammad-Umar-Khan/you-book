@@ -39,7 +39,7 @@ const AddNewUser = ({ users, setUsers }) => {
       }
     );
     const user = response.data;
-    setUsers([user, ...users]);
+    setUsers([...users, user]);
   };
 
   return (

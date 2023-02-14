@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import SearchFilter from "../SearchFilter/SearchFilter";
-// import EditModal from "./EditUser";
 import DeleteUser from "./DeleteUser";
 import EditUser from "./EditUser";
 import AddNewUser from "./AddNewUser";
